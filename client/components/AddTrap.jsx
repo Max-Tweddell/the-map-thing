@@ -2,7 +2,7 @@ import React from 'react'
 import { postTrap } from '../api'
 
 export default class AddTrap extends React.Component {
-    constructor(props){
+    constructor (props) {
         super(props)
         this.state = {
             latitude: 0,
@@ -22,28 +22,26 @@ export default class AddTrap extends React.Component {
         console.log(trap)
         console.log('addTrap')
         postTrap(trap, this.props.finishAdd)
-
     }
-    render() {
+    render () {
         return (
             <div className = "add-trap">
-              <form>
-                <p> Description </p>
-                <br/>
+                <form>
+                    <p> Description </p>
+                    <br/>
                 Latitude
-                <input type="number" step="0.00001" name="latitude"
-                       onChange={e => this.fieldChanged(e)}/>
-                  <br/>
+                    <input type="number" step="0.00001" name="latitude"
+                        onChange={e => this.fieldChanged(e)}/>
+                    <br/>
                   Longitude
-                  <input type="number" step="0.00001" name="longitude"
-                         onChange={e => this.fieldChanged(e)}/>
+                    <input type="number" step="0.00001" name="longitude"
+                        onChange={e => this.fieldChanged(e)}/>
                     <br/>
                     Description
                     <input type="text" name = "description" onChange={e => this.FieldChanged(e)}/>
-                      <button onClick={e => this.addTrap(e)}> add trap</button>
-              </form>
+                    <button onClick={e => this.addTrap(e)}> add trap</button>
+                </form>
             </div>
         )
-
     }
 }

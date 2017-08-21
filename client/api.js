@@ -1,6 +1,5 @@
 import request from 'superagent'
 
-
 export function getTraps (cb) {
     request
         .get('/api/traps')
@@ -11,8 +10,6 @@ export function getTraps (cb) {
                 cb(null, res.body.traps)
             }
         })
-
-
 }
 
 export function postTrap (trap, callback) {

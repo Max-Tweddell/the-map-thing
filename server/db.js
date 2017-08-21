@@ -8,7 +8,6 @@ function getTraps () {
         .select()
 }
 
-
 function addTrap (trap) {
     let newTrap = trap
     newTrap.trapcount = 0
