@@ -1,8 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { connect } from 'react-redux'
+
+import { fetchTraps } from '../actions'
 import Trap from './Trap'
 
-export default function Chart (props) {
+
+function Chart (props) {
+    props.dispatch(fetchTraps())
     let traps = props.traps
     return (
         <Map center={[-36.84, 174.74]} zoom={13}>
@@ -23,3 +29,15 @@ export default function Chart (props) {
         </Map>
     )
 }
+
+Chart.propTypes = {
+    traps: PropTypes.array.isRequired
+}
+
+function mapStateToProps (state) {
+    return {
+        traps: state.traps
+    }
+}
+
+export default connect(mapStateToProps)(Chart)

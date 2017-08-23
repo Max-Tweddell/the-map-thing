@@ -10,6 +10,8 @@ import AddTrap from './AddTrap'
 import TrapList from './TrapList'
 import { getTraps } from '../api'
 
+import {fetchTraps} from '../actions'
+
 export default class App extends React.Component {
     constructor (props) {
         super(props)
@@ -33,7 +35,7 @@ export default class App extends React.Component {
     render () {
         return (
             <div>
-                <Chart traps={this.state.traps} />
+                <Chart />
                 <AddTrap />
                 <TrapList />
           </div>

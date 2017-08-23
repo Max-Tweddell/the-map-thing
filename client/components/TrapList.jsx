@@ -1,46 +1,35 @@
 import React from 'react'
-import { getTraps } from '../api'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import {fetchTraps} from '../actions'
 
-export default class TrapList extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            traps: []
-        }
-        this.setData = this.setData.bind(this)
-    }
+import LoadTraps from './LoadTraps'
 
-    setData(err, trapData) {
-        if (err) {
-            console.log(err)
-        } else {
-            this.setState({traps: trapData})
-        }
-    }
-
-    componentDidMount () {
-        console.log(this.setData)
-        getTraps(this.setData)
-
-    }
-
-    render () {
-        console.log(this.state.traps)
-        console.log('traplist')
-        return (
-            <div>
-              <ul>
-                {this.state.traps.map(x => {
+function TrapList ({traps}) {
+    return (
+        <div>
+            <ul>
+                {traps.map(x => {
                     return (
-
                         <li>{x.description}
-                          <p>[{x.latitude},{x.longitude}]</p>
+                            <p>[{x.latitude},{x.longitude}]</p>
                         </li>
                     )
-                }
-                                     )}
+                })}
             </ul>
-                </div>
-        )
+            <LoadTraps/>
+        </div>
+    )
+}
+
+TrapList.propTypes = {
+    traps: PropTypes.array.isRequired
+}
+
+function mapStateToProps (state) {
+    return {
+        traps: state.traps
     }
 }
+
+export default connect(mapStateToProps)(TrapList)

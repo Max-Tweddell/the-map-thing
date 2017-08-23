@@ -25,6 +25,7 @@ export function addNewTrap (trap) {
 }
 
 export function receiveTraps (traps) {
+    console.log(traps)
     return {
         type: RECEIVE_TRAPS,
         traps: traps
@@ -46,7 +47,7 @@ export function fetchTraps () {
                 if (err) {
                     dispatch(showError(err.message))
                 } else {
-                    dispatch(receiveTraps(res.body))
+                    dispatch(receiveTraps(res.body.traps))
                 }
             })
     }
